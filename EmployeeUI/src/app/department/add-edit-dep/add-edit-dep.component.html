@@ -1,0 +1,22 @@
+<div class="one_half last">
+    <form>
+        <div class="form-group section-group">
+            <label for="exampleInputDepartmentName" class="mb-2">Department Name</label>
+            <br>
+            <input
+                type="text"
+                class="form-control mb-2"
+                id="exampleInputDepartmentName"
+                placeholder="Enter Department Name"
+                [(ngModel)]="DepartmentName"
+            />
+        </div>
+        <button (click)="addDepartment()" *ngIf="dep.DepartmentId==0" class="btn btn-primary">
+            Add
+        </button>
+        
+        <button (click)="updateDepartment()" *ngIf="dep.DepartmentId!=0" class="btn btn-primary">
+            Update
+        </button>
+    </form>
+</div>
