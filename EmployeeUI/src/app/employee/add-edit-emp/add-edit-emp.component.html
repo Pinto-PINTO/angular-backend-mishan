@@ -1,1 +1,61 @@
-<p>add-edit-emp works!</p>
+<div class="one_half last">
+  <div>
+    <div class="form-group section-group">
+      <label class="mb-2">Employee Name</label>
+      <br />
+      <input
+        type="text"
+        class="form-control mb-2"
+        id="exampleInputEmployeeName"
+        placeholder="Enter Employee Name"
+        [(ngModel)]="EmployeeName"
+      />
+
+      <label class="mb-2">Employee Department</label>
+      <br />
+      <input
+        type="text"
+        class="form-control mb-2"
+        id="exampleInputEmployeeDepartment"
+        placeholder="Enter Employee Department"
+        [(ngModel)]="Department"
+      />
+    </div>
+
+    <label class="mb-2">Date Joined</label>
+    <br />
+    <input
+      type="date"
+      class="form-control mb-2"
+      id="exampleInputDateJoined"
+      placeholder="Enter Date Joined"
+      [(ngModel)]="DateOfJoining"
+    />
+
+    <label class="mb-2">Profile Photo</label>
+    <br />
+    <input
+      type="text"
+      class="form-control mb-2"
+      id="exampleInputPhoto"
+      placeholder="Enter Profile Phot"
+      [(ngModel)]="PhotoFileName"
+    />
+
+    <button
+      (click)="addEmployee()"
+      *ngIf="emp.EmployeeId == 0"
+      class="btn btn-primary"
+    >
+      Add
+    </button>
+
+    <button
+      (click)="updateEmployee()"
+      *ngIf="emp.EmployeeId != 0"
+      class="btn btn-primary"
+    >
+      Update
+    </button>
+  </div>
+</div>

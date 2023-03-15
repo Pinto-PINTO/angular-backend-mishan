@@ -1,1 +1,86 @@
-<p>show-delete-emp works!</p>
+<button
+  type="button"
+  class="btn btn-primary float-right mt-3"
+  role="button"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal2"
+  (click)="openModal()"
+>
+  Add Employee
+</button>
+
+<div
+  class="modal fade"
+  id="exampleModal2"
+  tabindex="-1"
+  aria-labelledby="exampleModal2Label"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-danger" id="exampleModal2Label">
+          {{ Title }}
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          click="closeModalClick()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <app-add-edit-emp
+          [emp]="emp"
+          *ngIf="ActivateAddEditEmpComp"
+        ></app-add-edit-emp>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--------------------------------
+----------MODAL END --------------
+--------------------------------->
+
+<table class="table table-striped table-margin-top">
+  <thead>
+    <tr>
+      <th>EmployeeId</th>
+      <th>Employee Name</th>
+      <th>Department</th>
+      <th>Date of Joining</th>
+      <th>Photo File</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dataItem of EmployeeList">
+      <td>{{ dataItem.EmployeeId }}</td>
+      <td>{{ dataItem.EmployeeName }}</td>
+      <td>{{ dataItem.Department }}</td>
+      <td>{{ dataItem.DateOfJoining }}</td>
+      <td>{{ dataItem.PhotoFileName }}</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-light mr-1"
+          role="button"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal2"
+          (click)="editClick(dataItem)"
+        >
+          Edit
+        </button>
+        <button
+          type="button"
+          class="btn btn-light mr-1"
+          (click)="deleteClick(dataItem)"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
