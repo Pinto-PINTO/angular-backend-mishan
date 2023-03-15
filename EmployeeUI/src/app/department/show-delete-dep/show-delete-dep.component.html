@@ -81,30 +81,7 @@
         ></button>
       </div>
       <div class="modal-body">
-        <!-- ----------------------------------------
-        ----------------FORM SECTION ----------------
-        ----------------------------------------- -->
-
-        <!-- <div class="one_half last">
-          <form>
-            <div class="form-group section-group">
-              <label for="exampleInputDepartmentName" class="mb-2">Department Name</label>
-              <br>
-              <input
-                type="text"
-                class="form-control mb-2"
-                id="exampleInputDepartmentName"
-                placeholder="Enter Department Name"
-              />
-            </div>
-            <button type="submit" class="btn btn-primary submit-button-span">{{ButtonName}}</button>
-          </form>
-        </div> -->
-
         <app-add-edit-dep [dep]="dep" *ngIf="ActivateAddEditDepComp"></app-add-edit-dep>
-        <!-- ----------------------------------------
-        ----------------FORM SECTION ----------------
-        ----------------------------------------- -->
       </div>
     </div>
   </div>

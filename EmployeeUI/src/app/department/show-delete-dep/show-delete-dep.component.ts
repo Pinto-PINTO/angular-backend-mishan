@@ -30,6 +30,7 @@ export class ShowDeleteDepComponent implements OnInit{
       DepartmentId:0,
       DepartmentName:''
     }
+    this.ActivateAddEditDepComp=true;
   }
 
   editClick(item:any) {
@@ -62,3 +63,6 @@ export class ShowDeleteDepComponent implements OnInit{
   }
 
 }
+
+// https://stackoverflow.com/questions/55275025/how-to-set-value-to-form-control-in-reactive-forms-in-angular#:~:text=Setting%20or%20Updating%20of%20Reactive,value%20of%20your%20Form%20Controls.
+// https://www.google.com/search?q=patch+value+in+angular+reactive+forms&sxsrf=AJOqlzUCSLvNaVlOCG-n8HsHR9P-XxAjqQ%3A1678764185046&ei=megPZI6wApONmge8oYSABw&oq=patch+value+in+angular+re&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQARgAMgUIABCABDIFCAAQhgMyBQgAEIYDOgoIABBHENYEELADOgYIABAWEB46CAgAEBYQHhAKSgQIQRgAUBNY6AJg9AdoAXABeACAAYMCiAHjA5IBBTEuMS4xmAEAoAEByAEIwAEB&sclient=gws-wiz-serp

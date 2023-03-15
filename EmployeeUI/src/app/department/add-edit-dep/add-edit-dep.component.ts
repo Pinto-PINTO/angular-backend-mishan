@@ -11,13 +11,17 @@ export class AddEditDepComponent implements OnInit{
 
   constructor(private service:SharedService) {}
 
+  // List to store all departments
+  DepartmentList:any=[];
+
   @Input() dep:any;
-  DepartmentId:string='';
-  DepartmentName:string='';
+  DepartmentId:any;
+  DepartmentName:any;
   
   ngOnInit(): void {
     this.DepartmentId=this.dep.DepartmentId;
     this.DepartmentName=this.dep.DepartmentName;
+    this.refreshDepList();
   }
 
   addDepartment(){
@@ -35,5 +39,11 @@ export class AddEditDepComponent implements OnInit{
     alert(res.toString());
     });
   }
-  
+
+  refreshDepList(){
+    this.service.getDepList().subscribe(data=>{
+      this.DepartmentList=data;
+    });
+  }
+
 }
