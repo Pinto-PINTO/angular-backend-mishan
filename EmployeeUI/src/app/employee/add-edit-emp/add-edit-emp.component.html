@@ -1,5 +1,5 @@
 <div class="one_half last">
-  <div>
+  <form [formGroup]="employeeForm">
     <div class="form-group section-group">
       <label class="mb-2">Employee Name</label>
       <br />
@@ -8,7 +8,7 @@
         class="form-control mb-2"
         id="exampleInputEmployeeName"
         placeholder="Enter Employee Name"
-        [(ngModel)]="EmployeeName"
+        formControlName="EmployeeName"
       />
 
       <label class="mb-2">Employee Department</label>
@@ -18,7 +18,7 @@
         class="form-control mb-2"
         id="exampleInputEmployeeDepartment"
         placeholder="Enter Employee Department"
-        [(ngModel)]="Department"
+        formControlName="Department"
       />
     </div>
 
@@ -29,7 +29,7 @@
       class="form-control mb-2"
       id="exampleInputDateJoined"
       placeholder="Enter Date Joined"
-      [(ngModel)]="DateOfJoining"
+      formControlName="DateOfJoining"
     />
 
     <label class="mb-2">Profile Photo</label>
@@ -39,7 +39,7 @@
       class="form-control mb-2"
       id="exampleInputPhoto"
       placeholder="Enter Profile Phot"
-      [(ngModel)]="PhotoFileName"
+      formControlName="PhotoFileName"
     />
 
     <button
@@ -57,5 +57,5 @@
     >
       Update
     </button>
-  </div>
+  </form>
 </div>

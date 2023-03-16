@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {SharedService} from 'src/app/shared.service';
+import { FormGroup, FormControl, Validator, Validators } from '@angular/forms'; 
 
 @Component({
   selector: 'app-show-delete-emp',
@@ -19,6 +20,13 @@ export class ShowDeleteEmpComponent implements OnInit{
   ActivateAddEditEmpComp:boolean=false;
   emp:any;
 
+
+  employeeForm = new FormGroup({
+    EmployeeName: new FormControl(''),
+    Department: new FormControl(''),
+    DateOfJoining: new FormControl(''),
+    PhotoFileName: new FormControl('')
+  })
 
   ngOnInit(): void {
     this.refreshEmpList();
@@ -40,11 +48,13 @@ export class ShowDeleteEmpComponent implements OnInit{
     this.Title="Edit Employee";
     this.emp=item;
     this.ActivateAddEditEmpComp=true;  
+    this.employeeForm.controls.EmployeeName.setValue('abc');
+    console.log(item)
   }
 
   deleteClick(item:any) {
     if(confirm("Are you sure you want to delete ?")){
-      this.service.deleteDepartment(item.DepartmentId).subscribe(data=>{
+      this.service.deleteEmployee(item.EmployeeId).subscribe(data=>{
         this.refreshEmpList();
         alert(data.toString());
       })

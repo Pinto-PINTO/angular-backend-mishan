@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {SharedService} from 'src/app/shared.service';
+import { FormGroup, FormControl, Validator, Validators } from '@angular/forms'; 
 
 @Component({
   selector: 'app-add-edit-emp',
@@ -13,6 +14,7 @@ export class AddEditEmpComponent implements OnInit{
 
   // List to store all departments
   EmployeeList:any=[];
+  employee: any = {};
 
   @Input() emp:any;
   EmployeeId:any;
@@ -20,38 +22,47 @@ export class AddEditEmpComponent implements OnInit{
   Department:any;
   DateOfJoining:any;
   PhotoFileName:any;
+
+
+  employeeForm = new FormGroup({
+    EmployeeName: new FormControl(''),
+    Department: new FormControl(''),
+    DateOfJoining: new FormControl(''),
+    PhotoFileName: new FormControl('')
+  })
   
   ngOnInit(): void {
-    this.EmployeeId=this.emp.EmployeeId;
-    this.EmployeeName=this.emp.EmployeeName;
-    this.Department=this.emp.Department;
-    this.DateOfJoining=this.emp.DateOfJoining;
-    this.PhotoFileName=this.emp.PhotoFileName;
+    this.service.getEmpList()
     this.refreshEmpList();
   }
 
   addEmployee(){
-    var val = {EmployeeId:this.EmployeeId,
-      EmployeeName:this.EmployeeName,
-      Department:this.Department,
-      DateOfJoining:this.DateOfJoining,
-      PhotoFileName:this.PhotoFileName,
-    };
-    this.service.addEmployee(val).subscribe(res=>{
+    
+    this.service.addEmployee(this.employeeForm.value).subscribe(res=>{
+      console.log(this.employeeForm.value)
       alert(res.toString());
     });
   }
 
   updateEmployee(){
-    var val = {EmployeeId:this.EmployeeId,
-      EmployeeName:this.EmployeeName,
-      Department:this.Department,
-      DateOfJoining:this.DateOfJoining,
-      PhotoFileName:this.PhotoFileName,
-    };
-    this.service.updateEmployee(val).subscribe(res=>{
+    // var val = {EmployeeId:this.EmployeeId,
+    //   EmployeeName:this.EmployeeName,
+    //   Department:this.Department,
+    //   DateOfJoining:this.DateOfJoining,
+    //   PhotoFileName:this.PhotoFileName,
+    // };
+    console.log("THis runs")
+    this.service.updateEmployee(this.employeeForm.value).subscribe(res=>{
+    console.log(this.employeeForm.value)
     alert(res.toString());
     });
+    // this.service.updateEmployee(this.employeeForm.value).subscribe(res => {
+    //   this.EmployeeList = res;
+    //   this.employeeForm.patchValue({
+    //     EmployeeName: this.EmployeeList.EmployeeName,
+    //     Department: this.EmployeeList.Department
+    //   });
+    // });
   }
 
   refreshEmpList(){
