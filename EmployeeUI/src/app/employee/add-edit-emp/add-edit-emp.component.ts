@@ -23,6 +23,12 @@ export class AddEditEmpComponent implements OnInit{
   DateOfJoining:any;
   PhotoFileName:any;
 
+  empString:any;
+  
+
+  // Data passing from parent to child
+  // @Input() EmployeeDataFromParent:any
+
 
   employeeForm = new FormGroup({
     EmployeeName: new FormControl(''),
@@ -30,10 +36,23 @@ export class AddEditEmpComponent implements OnInit{
     DateOfJoining: new FormControl(''),
     PhotoFileName: new FormControl('')
   })
-  
+
+   
   ngOnInit(): void {
     this.service.getEmpList()
     this.refreshEmpList();
+    console.log("Child Emp: ", this.emp)
+    this.empString = JSON.stringify(this.emp);
+    console.log("Emp Name: ", JSON.stringify(this.emp.EmployeeName))
+    this.empString = JSON.stringify(this.emp);
+
+    // this.employeeForm.patchValue({
+    //   EmployeeName: this.emp.EmployeeName,
+    //   Department: this.emp.Department,
+    //   DateOfJoining: this.emp.DateOfJoining,
+    //   PhotoFileName: this.emp.PhotoFileName,
+    // });
+
   }
 
   addEmployee(){
@@ -51,18 +70,26 @@ export class AddEditEmpComponent implements OnInit{
     //   DateOfJoining:this.DateOfJoining,
     //   PhotoFileName:this.PhotoFileName,
     // };
-    console.log("THis runs")
-    this.service.updateEmployee(this.employeeForm.value).subscribe(res=>{
-    console.log(this.employeeForm.value)
-    alert(res.toString());
-    });
-    // this.service.updateEmployee(this.employeeForm.value).subscribe(res => {
-    //   this.EmployeeList = res;
-    //   this.employeeForm.patchValue({
-    //     EmployeeName: this.EmployeeList.EmployeeName,
-    //     Department: this.EmployeeList.Department
-    //   });
+    // console.log("THis runs")
+    // this.service.updateEmployee(this.employeeForm.value).subscribe(res=>{
+    // console.log(this.employeeForm.value)
+    // alert(res.toString());
     // });
+    console.log("Hey")
+    this.service.updateEmployee(this.employeeForm.value).subscribe(res => {
+      this.EmployeeList = res;
+      // this.employeeForm.patchValue({
+      //   EmployeeName: this.EmployeeList.EmployeeName,
+      //   Department: this.EmployeeList.Department,
+      //   DateOfJoining: this.EmployeeList.DateOfJoining,
+      //   PhotoFileName: this.EmployeeList.PhotoFileName,
+
+      // });
+      // this.employeeForm.patchValue({
+      //   EmployeeName: "Bob"
+      // });
+    });
+    console.log("Child Emp: ",this.emp)
   }
 
   refreshEmpList(){

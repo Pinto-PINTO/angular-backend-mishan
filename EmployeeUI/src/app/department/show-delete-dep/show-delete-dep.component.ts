@@ -37,6 +37,8 @@ export class ShowDeleteDepComponent implements OnInit{
     this.Title="Edit Department";
     this.dep=item;
     this.ActivateAddEditDepComp=true;  
+    console.log("Dep: ", this.dep)
+    console.log("Dep List: ", this.DepartmentList)
   }
 
   deleteClick(item:any) {

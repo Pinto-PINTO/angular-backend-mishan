@@ -20,6 +20,9 @@ export class ShowDeleteEmpComponent implements OnInit{
   ActivateAddEditEmpComp:boolean=false;
   emp:any;
 
+  // Variable used for data passing
+  // currentEmployeeRecord: any
+
 
   employeeForm = new FormGroup({
     EmployeeName: new FormControl(''),
@@ -49,7 +52,11 @@ export class ShowDeleteEmpComponent implements OnInit{
     this.emp=item;
     this.ActivateAddEditEmpComp=true;  
     this.employeeForm.controls.EmployeeName.setValue('abc');
-    console.log(item)
+    console.log("Emp: ", this.emp);
+
+    this.employeeForm.patchValue({
+      EmployeeName: "Bob"
+    });
   }
 
   deleteClick(item:any) {
